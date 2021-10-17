@@ -7,18 +7,18 @@
     "platforms": [
         "raspberrypi"
     ],
-		"boards": [
-				"pico"
-		],
+    "boards": [
+        "pico"
+    ],
     "frameworks": "arduino",
     "build": {
         "flags": [
             "-Llib",
             "-lUtilities_CPP",
-						"-lWire",
-						"-lExternal_EEPROM",
-						"-lDualChecksumPubSub_CPP",
-						"-lT3Library"
+            "-lWire",
+            "-lExternal_EEPROM",
+            "-lDualChecksumPubSub_CPP",
+            "-lT3Library"
         ]
     }
 }
