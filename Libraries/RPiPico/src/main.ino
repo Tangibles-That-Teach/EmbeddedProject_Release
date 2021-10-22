@@ -45,7 +45,6 @@ static const uint8_t SENSOR_PIN{26};  // Pin for reading sensor values (ADC0)
 
 /* Local controller struct */
 typedef struct {
-	int8_t  sensor_id;        // ID of the sensor
 	int8_t  Ki_id;            // ID of the integral gain
 	int8_t  Kp_id;            // ID of the proportional gain
 	int8_t  Kd_id;            // ID of the derivative gain
@@ -64,10 +63,8 @@ int8_t angle_id;
 /* Filter buffer size */
 const uint8_t FILTER_BUFFER_SIZE = 3;
 float filterBuffer[FILTER_BUFFER_SIZE];  // Array for moving average filter
-float filteredVal;                // Current filtered valued
-int filterIndex;                        // Current index of filterBuffer
-
-uint64_t last_send_ms = 0;
+float filteredVal;                		 // Current filtered valued
+int filterIndex;                         // Current index of filterBuffer
 
 
 // ================================================================
@@ -156,12 +153,6 @@ uint16_t updatePID(float goalValue, uint64_t time_ms, bool reset) {
 }
 
 void setup() {
-	// Turn on debugging messages
-	t3Library.enableDebug();
-
-	// Setup for UDP if using ESP32
-	t3Library.setLocalPortAndService(1234, "tangibleproj");
-
 	// Local setup
 	pid_controller.last_time_ms = 0;
 
